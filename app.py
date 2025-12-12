@@ -140,6 +140,11 @@ def slack_events():
     return handler.handle(request)
 
 
+@flask_app.route("/health", methods=["GET"])
+def health_check():
+    return {"status": "ok"}, 200
+
+
 if __name__ == "__main__":
     # 로컬에서 3000 포트로 실행 (ngrok 등으로 외부 공개 필요)
     flask_app.run(host="0.0.0.0", port=3000, debug=True)
